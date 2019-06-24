@@ -24,6 +24,7 @@ const Mimic = (() => {
         self.sandbox.stub(collection, 'insert').callsFake(shape.insert.bind(shape))
         self.sandbox.stub(collection, 'remove').callsFake(shape.remove.bind(shape))
         self.sandbox.stub(collection, 'find').callsFake(shape.find.bind(shape))
+        self.sandbox.stub(collection, 'findOne').callsFake(shape.findOne.bind(shape))
 
         self.colPairs.set(collection, shape)
     }
