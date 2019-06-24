@@ -30,6 +30,7 @@ Package.onTest(function onTest(api) {
         'mongo',
         'lmieulet:meteor-coverage@3.2.0',
         'meteortesting:mocha@1.1.2',
+        'matb33:collection-hooks@0.8.4',
     ])
     api.mainModule('tests.js')
 })
