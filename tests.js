@@ -2,6 +2,7 @@
 
 import { Meteor } from 'meteor/meteor'
 import { Mongo } from 'meteor/mongo'
+import SimpleSchema from 'simpl-schema'
 import { expect } from 'chai'
 
 import Mimic from './index'
@@ -10,10 +11,8 @@ const widgets = new Mongo.Collection('widgets')
 const localWidgets1 = new Mongo.Collection(null)
 const localWidgets2 = new Mongo.Collection(null)
 
-// 13JUN19 JS
-// TODO: add schema support back in
-// const schema = { schemaKey: { type: String, optional: true } };
-// widgets.attachSchema(new SimpleSchema(schema));
+const schema = { schemaKey: { type: String, optional: true } }
+widgets.attachSchema(new SimpleSchema(schema))
 
 if (Meteor.isServer) {
     widgets.remove({})
@@ -40,16 +39,16 @@ describe('Mimic', function() {
         expect(widgets.find().count()).to.equal(1)
     })
 
-    xit('should stub the schema of a collection', function() {
+    it('should stub the schema of a collection', function() {
         expect(widgets.simpleSchema()._firstLevelSchemaKeys).to.include('schemaKey')
-        Mimic.stub([widgets])
+        Mimic.shimmer(widgets)
         expect(widgets.simpleSchema()._firstLevelSchemaKeys).to.include('schemaKey')
         Mimic.restore()
         expect(widgets.simpleSchema()._firstLevelSchemaKeys).to.include('schemaKey')
     })
 
     it('should stub mutliple null collections', function() {
-        localWidgets1.insert({})
+        localWidgets1.insert({ thingId: 4 })
         localWidgets2.insert({})
         localWidgets2.insert({})
 
@@ -62,11 +61,12 @@ describe('Mimic', function() {
         expect(localWidgets1.find().count()).to.equal(0)
         expect(localWidgets2.find().count()).to.equal(0)
 
-        localWidgets1.insert({})
+        localWidgets1.insert({ thingId: 7 })
         localWidgets1.insert({})
         localWidgets2.insert({})
 
         expect(localWidgets1.find().count()).to.equal(2)
+        expect(localWidgets1.find({ thingId: 7 }).count()).to.equal(1)
         expect(localWidgets2.find().count()).to.equal(1)
 
         Mimic.restore()
