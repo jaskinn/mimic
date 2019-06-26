@@ -4,8 +4,7 @@
 Package.describe({
     name: 'jaskinn:mimic',
     version: '1.1.0',
-    summary:
-        'Stub out Meteor collections with in-memory local collections. (forked from hwillson:meteor-stub-collections)',
+    summary: 'Stub out Meteor collections (forked from hwillson:meteor-stub-collections)',
     documentation: 'README.md',
     git: 'https://github.com/jaskinn/mimic.git',
     debugOnly: true,
