@@ -5,13 +5,13 @@
         "test": "meteor test-packages ./ --driver-package meteortesting:mocha"
     },
     "devDependencies": {
-        "babel-eslint": "^10.0.2",
-        "eslint": "^6.0.1",
-        "eslint-config-airbnb": "^17.1.0",
+        "babel-eslint": "^10.0.3",
+        "eslint": "^6.8.0",
+        "eslint-config-airbnb": "^18.0.1",
         "eslint-import-resolver-meteor": "^0.4.0",
-        "eslint-plugin-import": "^2.18.0",
-        "eslint-plugin-jsx-a11y": "^6.2.1",
-        "eslint-plugin-meteor": "^5.1.0"
+        "eslint-plugin-import": "^2.19.1",
+        "eslint-plugin-jsx-a11y": "^6.2.3",
+        "eslint-plugin-meteor": "^6.0.0"
     },
     "eslintConfig": {
         "plugins": [
