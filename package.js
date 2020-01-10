@@ -3,7 +3,7 @@
 
 Package.describe({
     name: "jaskinn:mimic",
-    version: "1.1.0",
+    version: "1.1.1",
     summary:
         "Stub out Meteor collections (forked from hwillson:meteor-stub-collections)",
     documentation: "README.md",
